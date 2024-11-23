@@ -17,5 +17,5 @@ int main (int argc, char **argv){
         printf("\nEl numero de GPUs disponibles es: %d\n\n",contar);
 
 
-
+return 0;
 }
