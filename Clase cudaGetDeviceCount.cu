@@ -7,7 +7,7 @@ Permite a los desarrolladores utilizar las GPU (Unidades de Procesamiento Gráfi
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <cuda.h>//Contiene definiciones y funciones necesarias para programar y gestionar aplicaciones CUDA en C.
+#include <cuda.h>  //Contiene definiciones y funciones necesarias para programar y gestionar aplicaciones CUDA en C.
 
 int main (int argc, char **argv){
 
