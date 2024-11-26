@@ -11,6 +11,11 @@ Orden:
     <button>[Transferencia de Memoria]</button>
   </a>
   <br>
+  Clase 3 
+  <a href="https://github.com/EnriqueBDeL/Clases-CUDA-Programacion-Paralela-en-C-/blob/main/Clase%20Suma%20de%20Vectores%20en%20CUDA.cu" target="_blank">
+    <button>[Suma de Vectores en CUDA]</button>
+  </a>
+  <br>
 </div>
 
 <br> 
