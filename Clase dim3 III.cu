@@ -1,4 +1,10 @@
 #include <stdio.h>
+#include <cuda.h>
+
+//------------------------------------------------|
+// Contenido: sentencia dim3 con tres dimensiones.
+//------------------------------------------------|
+
 
 __global__ void sumaMatrices3D(int *A, int *B, int *C, int z, int y, int x) {
    
