@@ -7,34 +7,39 @@
 //----------------------------------------------|
 
 
-__global__ void sumaVectores(int *A, int *B, int *C, int N) {
-  
-  	int idx = blockIdx.x * blockDim.x + threadIdx.x;
+__global__ void sumaMatrices3D(int *A, int *B, int *C, int z, int y, int x) {
    
- 	if (idx < N) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    int idy = blockIdx.y * blockDim.y + threadIdx.y;
+    int idz = blockIdx.z * blockDim.z + threadIdx.z;
 
-       		C[idx] = A[idx] + B[idx];
+    if (idx < x && idy < y && idz < z) {
 
-    	}
+        int index = idz * y * x + idy * x + idx;
+
+        C[index] = A[index] + B[index];
+    }
 }
 
+int main() {
 
 
-int main(int argc, char **argv) {
+    int x = 3, y = 3, z = 3;
+    int size = x * y * z * sizeof(int);
 
-
-    int N = 16;
-    int size = N * sizeof(int);
 
     int *h_A = (int *)malloc(size);
     int *h_B = (int *)malloc(size);
     int *h_C = (int *)malloc(size);
 
 
-
-    for (int i = 0; i < N; i++) {
-        h_A[i] = i;
-        h_B[i] = i * 2;
+    for (int i = 0; i < z; i++) {
+        for (int j = 0; j < y; j++) {
+            for (int k = 0; k < x; k++) {
+                h_A[i * y * x + j * x + k] = i * y * x + j * x + k + 1;
+                h_B[i * y * x + j * x + k] = (i * y * x + j * x + k + 1) * 2;
+            }
+        }
     }
 
 
@@ -49,40 +54,61 @@ int main(int argc, char **argv) {
     cudaMemcpy(d_B, h_B, size, cudaMemcpyHostToDevice);
 
 
-    dim3 blockDim(4); // Define el número de hilos dentro de cada bloque. 
 
-    dim3 gridDim((N + 3) / 4);   // "gridDim" define cuántos bloques en total se van a ejecutar en la rejilla (grid).
-                                  // Se usa junto con "blockDim" para distribuir el trabajo entre bloques y hilos en la GPU.
+    dim3 blockDim(2, 2, 2);
+    dim3 gridDim((x + blockDim.x - 1) / blockDim.x, 
+                 (y + blockDim.y - 1) / blockDim.y, 
+                 (z + blockDim.z - 1) / blockDim.z);
 
 
 
-    sumaVectores<<<gridDim, blockDim>>>(d_A, d_B, d_C, N);
+    sumaMatrices3D<<<gridDim, blockDim>>>(d_A, d_B, d_C, z, y, x);
+    cudaDeviceSynchronize();
+
+
 
     cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost);
 
 
 
-    printf("Vector A: ");
-    for (int i = 0; i < N; i++) {
-        printf("%d ", h_A[i]);
+    printf("Matriz A:\n");
+    for (int i = 0; i < z; i++) {
+        for (int j = 0; j < y; j++) {
+            for (int k = 0; k < x; k++) {
+                printf("%d ", h_A[i * y * x + j * x + k]);
+            }
+            printf("\n");
+        }
+        printf("\n");
     }
-    printf("\n");
 
 
 
-    printf("Vector B: ");
-    for (int i = 0; i < N; i++) {
-        printf("%d ", h_B[i]);
+
+    printf("Matriz B:\n");
+    for (int i = 0; i < z; i++) {
+        for (int j = 0; j < y; j++) {
+            for (int k = 0; k < x; k++) {
+                printf("%d ", h_B[i * y * x + j * x + k]);
+            }
+            printf("\n");
+        }
+        printf("\n");
     }
-    printf("\n");
 
 
 
-    printf("Resultado (A + B): ");
-    for (int i = 0; i < N; i++) {
-        printf("%d ", h_C[i]);
+
+    printf("Resultado (A + B):\n");
+    for (int i = 0; i < z; i++) {
+        for (int j = 0; j < y; j++) {
+            for (int k = 0; k < x; k++) {
+                printf("%d ", h_C[i * y * x + j * x + k]);
+            }
+            printf("\n");
+        }
+        printf("\n");
     }
-    printf("\n");
 
 
 
