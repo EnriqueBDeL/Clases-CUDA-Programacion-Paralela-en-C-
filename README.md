@@ -16,6 +16,21 @@ Orden:
     <button>[Suma de Vectores en CUDA]</button>
   </a>
   <br>
+    Clase 4 
+  <a href="https://github.com/EnriqueBDeL/Clases-CUDA-Programacion-Paralela-en-C-/blob/main/Clase%20dim3.cu" target="_blank">
+    <button>[Sentencia dim3 para una dimensión]</button>
+  </a>
+  <br>
+   Clase 5 
+  <a href="https://github.com/EnriqueBDeL/Clases-CUDA-Programacion-Paralela-en-C-/blob/main/Clase%20dim3%20II.cu" target="_blank">
+    <button>[Sentencia dim3 para dos dimensiones]</button>
+  </a>
+  <br>
+     Clase 6 
+  <a href="https://github.com/EnriqueBDeL/Clases-CUDA-Programacion-Paralela-en-C-/blob/main/Clase%20dim3%20III.cu" target="_blank">
+    <button>[Sentencia dim3 para tres dimensiones]</button>
+  </a>
+  <br>
 </div>
 
 <br> 
