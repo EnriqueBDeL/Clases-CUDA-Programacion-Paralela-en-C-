@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <cuda.h>
 
+
+//----------------------------------------------|
+// Contenido: sentencia dim3 con una dimensión.
+//----------------------------------------------|
+
+
 __global__ void sumaVectores(int *A, int *B, int *C, int N) {
   
   	int idx = blockIdx.x * blockDim.x + threadIdx.x;
