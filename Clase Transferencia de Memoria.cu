@@ -21,10 +21,10 @@ int main(int argc, char **argv){
         }
 
 
-        printf("%nDatos del host:%n");
+        printf("\nDatos del host:\n");
         for(int i = 0; i < n; i++){
 
-                printf("h_dato[%d] = %f%n",i,h_dato[i]);
+                printf("h_dato[%d] = %f\n",i,h_dato[i]);
 
         }
 
@@ -53,10 +53,10 @@ int main(int argc, char **argv){
 //host
 
 
-        printf("%nDatos depues de la copia a la GPU y de vuelta al host:%n");
+        printf("\nDatos depues de la copia a la GPU y de vuelta al host:\n");
         for(int i = 0; i < n; i++){
 
-                printf("h_resultado[%d] = %f%n",i,h_resultado[i]);
+                printf("h_resultado[%d] = %f\n",i,h_resultado[i]);
 
         }
 
