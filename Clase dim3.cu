@@ -43,9 +43,10 @@ int main(int argc, char **argv) {
     cudaMemcpy(d_B, h_B, size, cudaMemcpyHostToDevice);
 
 
-    dim3 blockDim(4); // Establece que cada bloque contiene 4 hilos. 
+    dim3 blockDim(4); // Define el número de hilos dentro de cada bloque. 
 
-    dim3 gridDim((N + 3) / 4); // Calcula cuántos bloques son necesarios para cubrir todos los elementos de "N"
+    dim3 gridDim((N + 3) / 4);   // "gridDim" define cuántos bloques en total se van a ejecutar en la rejilla (grid).
+                                  // Se usa junto con "blockDim" para distribuir el trabajo entre bloques y hilos en la GPU.
 
 
 
