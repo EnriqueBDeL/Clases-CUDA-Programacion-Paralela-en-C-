@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <cuda.h>
+
+// Kernel que suma dos vectores
+__global__ void sumaVectores(int *A, int *B, int *C, int N) {
+    // Cálculo del índice único usando blockIdx, blockDim y threadIdx
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+
+    // Asegurarse de no acceder fuera de los límites del vector
+    if (idx < N) {
+        C[idx] = A[idx] + B[idx];
+    }
+}
+
+int main() {
+    int N = 16; // Tamaño del vector
+    int size = N * sizeof(int);
+
+    // Reservar memoria en el host
+    int *h_A = (int *)malloc(size);
+    int *h_B = (int *)malloc(size);
+    int *h_C = (int *)malloc(size);
+
+    // Inicializar los vectores en el host
+    for (int i = 0; i < N; i++) {
+        h_A[i] = i;
+        h_B[i] = i * 2;
+    }
+
+    // Reservar memoria en el dispositivo
+    int *d_A, *d_B, *d_C;
+    cudaMalloc(&d_A, size);
+    cudaMalloc(&d_B, size);
+    cudaMalloc(&d_C, size);
+
+    // Copiar los datos del host al dispositivo
+    cudaMemcpy(d_A, h_A, size, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_B, h_B, size, cudaMemcpyHostToDevice);
+
+    // Configuración de la ejecución
+    dim3 blockDim(4);        // 4 hilos por bloque
+    dim3 gridDim((N + 3) / 4); // Número de bloques necesarios para N elementos
+
+    // Ejecutar el kernel
+    sumaVectores<<<gridDim, blockDim>>>(d_A, d_B, d_C, N);
+
+    // Copiar el resultado de vuelta al host
+    cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost);
+
+    // Imprimir los resultados
+    printf("Vector A: ");
+    for (int i = 0; i < N; i++) {
+        printf("%d ", h_A[i]);
+    }
+    printf("\n");
+
+    printf("Vector B: ");
+    for (int i = 0; i < N; i++) {
+        printf("%d ", h_B[i]);
+    }
+    printf("\n");
+
+    printf("Resultado (A + B): ");
+    for (int i = 0; i < N; i++) {
+        printf("%d ", h_C[i]);
+    }
+    printf("\n");
+
+    // Liberar memoria
+    free(h_A);
+    free(h_B);
+    free(h_C);
+    cudaFree(d_A);
+    cudaFree(d_B);
+    cudaFree(d_C);
+
+    return 0;
+}
