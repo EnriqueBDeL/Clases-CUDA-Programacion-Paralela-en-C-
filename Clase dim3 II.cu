@@ -1,4 +1,9 @@
 #include <stdio.h>
+#include <cuda.h>
+
+//------------------------------------------------|
+// Contenido: sentencia dim3 con dos dimensiones.
+//------------------------------------------------|
 
 __global__ void restarMatrices(int *A, int *B, int *C, int filas, int columnas) {
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
