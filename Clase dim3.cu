@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <cuda.h>
 
 __global__ void sumaVectores(int *A, int *B, int *C, int N) {
@@ -9,7 +10,7 @@ __global__ void sumaVectores(int *A, int *B, int *C, int N) {
     }
 }
 
-int main() {
+int main(int argc, char **argv) {
     int N = 16; 
     int size = N * sizeof(int);
 
