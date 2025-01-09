@@ -31,6 +31,11 @@ Orden:
     <button>[Sentencia dim3 para tres dimensiones]</button>
   </a>
   <br>
+      Clase 7 
+  <a href="https://github.com/EnriqueBDeL/Clases-CUDA-Programacion-Paralela-en-C-/blob/main/Clase%20device.cu" target="_blank">
+    <button>[Sentencia device]</button>
+  </a>
+  <br>
 </div>
 
 <br> 
