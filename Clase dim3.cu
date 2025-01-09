@@ -27,11 +27,9 @@ int main() {
     cudaMalloc(&d_B, size);
     cudaMalloc(&d_C, size);
 
-    // Copiar los datos del host al dispositivo
     cudaMemcpy(d_A, h_A, size, cudaMemcpyHostToDevice);
     cudaMemcpy(d_B, h_B, size, cudaMemcpyHostToDevice);
 
-    // Configuración de la ejecución
     dim3 blockDim(4);      
     dim3 gridDim((N + 3) / 4);
 
