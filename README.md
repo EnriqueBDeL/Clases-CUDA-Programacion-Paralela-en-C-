@@ -50,7 +50,7 @@
 
 
 > [!WARNING]  
-> **Este fichero ha sido creado durante mis estudios.**  
+> **Este repositorio ha sido creado durante mis estudios.**  
 > Puede contener fallos o no seguir las mejores prácticas.  
 > Se recomienda contrastar la información y tener en cuenta que esta forma de programar puede no ser la que se espera o recomienda por parte de su profesor.  
 
