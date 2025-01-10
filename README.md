@@ -42,6 +42,7 @@
 <br>
 
 > [!TIP]
+> **¿Se ha estropeado el servidor de la universidad o no tienes dinero para comprarte una tarjeta gráfica y utilizar CUDA?**<br>
 > En este archivo aprenderás a configurar tu propio servidor en la nube que ejecute CUDA de forma sencilla y gratuita, utilizando Google Colab. 
 [CUDA Google Colab](https://github.com/EnriqueBDeL/Clases-CUDA-Programacion-Paralela-en-C-/blob/main/Configuraci%C3%B3n%20y%20uso%20de%20Google%20Colab%20con%20CUDA.txt)
 
@@ -49,7 +50,7 @@
 <br>
 
 
-> [!WARNING]  
+> [!WARNING]
 > Este repositorio ha sido creado durante mis estudios, por lo que puede contener errores o no seguir las mejores prácticas. Se recomienda contrastar la información y tener en cuenta que esta forma de programar podría no ser la esperada o recomendada por su profesor. 
 
 
