@@ -1,4 +1,4 @@
-Orden:
+<strong>Orden:</strong>
 
 <div align="left">
   Clase 1 
@@ -37,6 +37,18 @@ Orden:
   </a>
   <br>
 </div>
+
+<br>
+<br>
+
+> [!TIP]
+> En este archivo aprenderás a configurar tu propio servidor en la nube que ejecute CUDA de forma sencilla y gratuita, utilizando Google Colab. 
+[CUDA Google Colab](https://github.com/EnriqueBDeL/Clases-CUDA-Programacion-Paralela-en-C-/blob/main/Configuraci%C3%B3n%20y%20uso%20de%20Google%20Colab%20con%20CUDA.txt)
+
+
+
+
+
 
 <br> 
 
