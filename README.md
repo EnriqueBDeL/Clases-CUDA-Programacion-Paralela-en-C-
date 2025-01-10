@@ -46,8 +46,13 @@
 [CUDA Google Colab](https://github.com/EnriqueBDeL/Clases-CUDA-Programacion-Paralela-en-C-/blob/main/Configuraci%C3%B3n%20y%20uso%20de%20Google%20Colab%20con%20CUDA.txt)
 
 
+<br>
 
 
+> [!WARNING]  
+> **Este fichero ha sido creado durante mis estudios.**  
+> Puede contener fallos o no seguir las mejores prácticas.  
+> Se recomienda contrastar la información y tener en cuenta que esta forma de programar puede no ser la que se espera o recomienda por parte de su profesor.  
 
 
 <br> 
