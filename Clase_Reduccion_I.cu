@@ -8,7 +8,17 @@ En GPU, la reducción es un patrón muy común y muy importante porque permite a
 
 Sin embargo, hacer esto de manera eficiente es complicado: hay que evitar divergencia, bank conflicts, pérdida de coalescing, y minimizar el trabajo innecesario.
 
+
+Memoria compartida:
+
+Es un espacio de memoria rápida dentro de cada bloque, accesible por todos sus hilos.
+Permite que los hilos cooperen e intercambien datos mucho más rápido que si usaran memoria global.
+
+No es estrictamente obligatoria a la hora de realizar la reducción, pero sí mejora muchísimo el rendimiento.
+Con shared memory se combinan valores localmente y solo se escribe un resultado final por bloque, reduciendo accesos globales.
+
 */
+
 
 
 //Codigo reducción básica:
@@ -32,7 +42,7 @@ Devuelve el total final en una única variable.
 __global__ void reduceBasic(int *input, int *output, int n) {
 
     extern __shared__ int sdata[]; //Declara un arreglo sin tamaño definido en memoria compartida. 
-  				   //El tamaño se decide en el <<...>> al ejecutar el kernel.
+  				                   //El tamaño se decide en el <<...>> al ejecutar el kernel.
                                    //Solo puede declararse una vez por archico o función kernel.
 
     int tid = threadIdx.x;
@@ -47,8 +57,8 @@ __global__ void reduceBasic(int *input, int *output, int n) {
     }
 
 
-    __syncthreads();//" __syncthreads" sirve para que cuando un hilo lo ejecute, este se detiene y espera a que todos los demás hilos del mismo bloque lleguen también a esa instrucción.
-  		   //Solo cuando todos han alcanzado ese punto, todos continúan la ejecución.
+    __syncthreads();   //" __syncthreads" sirve para que cuando un hilo lo ejecute, este se detiene y espera a que todos los demás hilos del mismo bloque lleguen también a esa instrucción.
+  		               //Solo cuando todos han alcanzado ese punto, todos continúan la ejecución.
 
     // Reducción clásica dividiendo a la mitad (s /= 2) cada vez
     for (int s = blockDim.x / 2; s > 0; s /= 2) {
@@ -112,4 +122,5 @@ int main() {
     free(h_input);
 
     return 0;
+
 }
