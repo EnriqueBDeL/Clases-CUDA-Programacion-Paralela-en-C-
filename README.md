@@ -36,7 +36,14 @@
     <button>[Sentencia device]</button>
   </a>
   <br>
+      Clase 8 
+  <a href="https://github.com/EnriqueBDeL/Clases-CUDA-Programacion-Paralela-en-C-/blob/main/Clase_Reduccion_I.cu" target="_blank">
+    <button>[Reducción]</button>
+  </a>
+  <br>
 </div>
+
+
 
 <br>
 <br>
